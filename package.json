@@ -1,0 +1,21 @@
+{
+    "name": "nightscout-bot",
+    "module": "src/index.ts",
+    "type": "module",
+    "private": true,
+    "scripts": {
+        "start": "bun .",
+        "deploy": "bun src/deploy-commands"
+    },
+    "devDependencies": {
+        "@types/bun": "latest"
+    },
+    "peerDependencies": {
+        "typescript": "^5"
+    },
+    "dependencies": {
+        "canvas": "^3.1.2",
+        "discord.js": "^14.21.0",
+        "mariadb": "^3.4.5"
+    }
+}
