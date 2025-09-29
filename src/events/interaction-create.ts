@@ -9,12 +9,9 @@ export default {
 
         try {
             if (interaction.user.id === "736850770955206666" || interaction.user.id === "372343076578131968") {
-                console.log("webhook");
                 const webhook = new WebhookClient({ url: process.env.WEBHOOK_URL as string });
-                console.log("channel name");
                 const currChannelName = (interaction.channel as TextChannel)?.name || "unknown";
-                console.log("send webhook");
-                await webhook.send(`${interaction.commandName} on guild ${interaction.guild?.name} on channel ${currChannelName}`);
+                await webhook.send(`\`/${interaction.commandName}\` on guild \`${interaction.guild?.name}\` on channel \`${currChannelName}\``);
             }
         } catch (e) {
             console.error("error, stupid", e);
