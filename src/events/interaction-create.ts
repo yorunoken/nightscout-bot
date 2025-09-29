@@ -1,4 +1,4 @@
-import { Client, type Interaction, TextChannel } from "discord.js";
+import { Client, type Interaction, TextChannel, WebhookClient } from "discord.js";
 import { commandsCollection } from "..";
 
 export default {
@@ -9,11 +9,9 @@ export default {
 
         try {
             if (interaction.user.id === "736850770955206666" || interaction.user.id === "372343076578131968") {
-                const channel = await client.channels.fetch("1422182537987358821");
-                if (channel && channel.isTextBased()) {
-                    const currChannel = interaction.channel?.fetch() as unknown as TextChannel;
-                    await (channel as TextChannel).send(`${interaction.commandName} on guild ${interaction.guild?.name} on channel ${currChannel.name}`);
-                }
+                const webhook = new WebhookClient({ url: process.env.WEBHOOK_URL as string });
+                const currChannel = interaction.channel ? ((await interaction.channel.fetch()) as TextChannel) : null;
+                await webhook.send(`${interaction.commandName} on guild ${interaction.guild?.name} on channel ${currChannel?.name || "unknown"}`);
             }
         } catch (e) {
             console.error("error, stupid", e);
