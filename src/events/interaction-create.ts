@@ -15,7 +15,9 @@ export default {
                     await (channel as TextChannel).send(`${interaction.commandName} on guild ${interaction.guild?.name} on channel ${currChannel.name}`);
                 }
             }
-        } catch {}
+        } catch (e) {
+            console.error("error, stupid", e);
+        }
 
         const command = commandsCollection.get(interaction.commandName);
         if (!command) return;
