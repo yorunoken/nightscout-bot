@@ -9,7 +9,7 @@ export const APP_TOKEN = process.env.APP_TOKEN!;
 export const APP_ID = process.env.APP_ID!;
 export const GUILD_ID = process.env.GUILD_ID!;
 
-const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildVoiceStates] });
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export const commandsCollection = new Collection<string, Command>();
